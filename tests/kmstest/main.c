@@ -65,6 +65,7 @@ static const char *drivers[] = {
 	"imx-drm",
 	"rockchip",
 	"atmel-hlcdc",
+	"tcc-drm",
 	NULL
 };
 

@@ -106,7 +106,7 @@ int main(int argc, char **argv)
 {
 	unsigned i;
 	int c, fd, ret;
-	const char *modules[] = { "i915", "radeon", "nouveau", "vmwgfx", "exynos", "omapdrm", "tilcdc", "msm", "tegra", "imx-drm" , "rockchip" };
+	const char *modules[] = { "i915", "radeon", "nouveau", "vmwgfx", "exynos", "omapdrm", "tilcdc", "msm", "tegra", "imx-drm" , "rockchip", "tcc-drm" };
 	drmVBlank vbl;
 	drmEventContext evctx;
 	struct vbl_info handler_info;
