@@ -353,6 +353,11 @@ if test "x$TEGRA" = xyes; then
 	AC_DEFINE(HAVE_TEGRA, 1, [Have Tegra support])
 fi
 
+AM_CONDITIONAL(HAVE_TCC, [test "x$TCC" = xyes])
+if test "x$TCC" = xyes; then
+	AC_DEFINE(HAVE_TCC, 1, [Have Tcc support])
+fi
+
 AM_CONDITIONAL(HAVE_INSTALL_TESTS, [test "x$INSTALL_TESTS" = xyes])
 if test "x$INSTALL_TESTS" = xyes; then
 	AC_DEFINE(HAVE_INSTALL_TESTS, 1, [Install test programs])
@@ -456,6 +461,8 @@ AC_CONFIG_FILES([
 	freedreno/libdrm_freedreno.pc
 	tegra/Makefile
 	tegra/libdrm_tegra.pc
+	tcc/Makefile
+	tcc/libdrm_tcc.pc
 	tests/Makefile
 	tests/modeprint/Makefile
 	tests/modetest/Makefile
@@ -465,6 +472,7 @@ AC_CONFIG_FILES([
 	tests/vbltest/Makefile
 	tests/exynos/Makefile
 	tests/tegra/Makefile
+	tests/tcc/Makefile
 	tests/nouveau/Makefile
 	man/Makefile
 	libdrm.pc])
@@ -482,4 +490,5 @@ echo "  OMAP API       $OMAP"
 echo "  EXYNOS API     $EXYNOS"
 echo "  Freedreno API  $FREEDRENO (kgsl: $FREEDRENO_KGSL)"
 echo "  Tegra API      $TEGRA"
+echo "  Tcc API        $TCC"
 echo ""

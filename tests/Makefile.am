@@ -16,6 +16,10 @@ if HAVE_TEGRA
 SUBDIRS += tegra
 endif
 
+if HAVE_TCC
+SUBDIRS += tcc
+endif
+
 if HAVE_LIBUDEV
 SUBDIRS += vbltest
 endif

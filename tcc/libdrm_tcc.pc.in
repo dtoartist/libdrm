@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: libdrm_tcc
+Description: Userspace interface to tcc kernel DRM services
+Version: 0.6
+Libs: -L${libdir} -ldrm_tcc
+Cflags: -I${includedir} -I${includedir}/libdrm -I${includedir}/tcc
+Requires.private: libdrm
