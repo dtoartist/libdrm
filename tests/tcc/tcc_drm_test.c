@@ -142,6 +142,19 @@ static struct tcc_bo *tcc_create_buffer(struct tcc_device *dev,
 	return bo;
 }
 
+static void tcc_destroy_buffer(struct tcc_bo *bo)
+{
+	tcc_bo_destroy(bo);
+}
+
+static void wait_for_user_input(int last)
+{
+	printf("press <ENTER> to %s\n", last ? "exit test application" :
+			"skip to next test");
+
+	getchar();
+}
+
 static void usage(char *name)
 {
 	fprintf(stderr, "usage: %s [-s]\n", name);

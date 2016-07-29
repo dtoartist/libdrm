@@ -39,6 +39,7 @@ endif
 
 if HAVE_TCC
 libkms_la_SOURCES += $(LIBKMS_TCC_FILES)
+AM_CFLAGS += -I$(top_srcdir)/tcc
 endif
 
 libkmsincludedir = ${includedir}/libkms

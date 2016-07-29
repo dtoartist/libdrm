@@ -91,6 +91,7 @@ struct drm_tcc_lcd_ovp {
 /* Reserved 0x03 ~ 0x05 for tcc specific gem ioctl */
 #define DRM_TCC_GEM_GET		0x04
 #define DRM_TCC_LCD_OVP		0x05
+#define DRM_TCC_VIDI_CONNECTION	0x07
 
 #define DRM_IOCTL_TCC_GEM_CREATE		DRM_IOWR(DRM_COMMAND_BASE + \
 		DRM_TCC_GEM_CREATE, struct drm_tcc_gem_create)
@@ -100,5 +101,8 @@ struct drm_tcc_lcd_ovp {
 
 #define DRM_IOCTL_TCC_LCD_OVP	DRM_IOWR(DRM_COMMAND_BASE + \
 		DRM_TCC_LCD_OVP,	struct drm_tcc_lcd_ovp)
+
+#define DRM_IOCTL_TCC_VIDI_CONNECTION	DRM_IOWR(DRM_COMMAND_BASE + \
+		DRM_TCC_VIDI_CONNECTION, struct drm_tcc_vidi_connection)
 
 #endif /* _UAPI_TCC_DRM_H_ */

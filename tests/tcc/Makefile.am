@@ -1,5 +1,6 @@
 AM_CPPFLAGS = \
 	-I$(top_srcdir)/include/drm \
+	-I$(top_srcdir)/libkms/ \
 	-I$(top_srcdir)/tcc \
 	-I$(top_srcdir)
 
@@ -9,5 +10,5 @@ LDADD = \
 	../../tcc/libdrm_tcc.la \
 	../../libdrm.la
 
-noinst_PROGRAMS = \
+bin_PROGRAMS = \
 	tcc_drm_test

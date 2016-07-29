@@ -116,6 +116,11 @@ AC_ARG_ENABLE(freedreno-kgsl,
 	      [Enable support for freedreno's to use downstream android kernel API (default: disabled)]),
 	      [FREEDRENO_KGSL=$enableval], [FREEDRENO_KGSL=no])
 
+AC_ARG_ENABLE(tcc,
+              AS_HELP_STRING([--enable-tcc],
+              [Enable support for tcc's KMS API (default: auto)]),
+              [TCC=$enableval], [TCC=yes])
+
 AC_ARG_ENABLE(tegra-experimental-api,
 	      AS_HELP_STRING([--enable-tegra-experimental-api],
 	      [Enable support for Tegra's experimental API (default: disabled)]),
