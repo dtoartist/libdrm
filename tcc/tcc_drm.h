@@ -83,6 +83,7 @@ enum e_drm_tcc_gem_mem_type {
 	TCC_BO_MASK = TCC_BO_NONCONTIG | TCC_BO_CACHABLE | TCC_BO_WC
 };
 
+/* tcc specific overlay priority change. */
 struct drm_tcc_lcd_ovp {
     unsigned int ovp_order;
 };
@@ -90,7 +91,7 @@ struct drm_tcc_lcd_ovp {
 #define DRM_TCC_GEM_CREATE		0x00
 /* Reserved 0x03 ~ 0x05 for tcc specific gem ioctl */
 #define DRM_TCC_GEM_GET		0x04
-#define DRM_TCC_LCD_OVP		0x05
+#define DRM_TCC_LCD_OVP		0x06
 #define DRM_TCC_VIDI_CONNECTION	0x07
 
 #define DRM_IOCTL_TCC_GEM_CREATE		DRM_IOWR(DRM_COMMAND_BASE + \

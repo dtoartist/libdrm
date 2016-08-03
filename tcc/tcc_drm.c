@@ -374,3 +374,32 @@ tcc_vidi_connection(struct tcc_device *dev, uint32_t connect,
 
 	return 0;
 }
+
+/*
+ * Request change tcc hardware overlay priority.
+ *
+ * @dev: a tcc device object.
+ * @ovp: a value to overlay priority value from user space.
+ *
+ * this interface is used to request changing tcc hardware overlay priority
+ * for this, user should set properly overlay value by tcc documentation.
+ *
+ * if true, return 0 else negative.
+ */
+int
+tcc_lcd_ovp(struct tcc_device *dev, uint32_t ovp)
+{
+	struct drm_tcc_lcd_ovp req = {
+		.ovp_order = ovp,
+	};
+	int ret;
+
+	ret = drmIoctl(dev->fd, DRM_IOCTL_TCC_LCD_OVP, &req);
+	if (ret) {
+		fprintf(stderr, "failed to request change tcc overlay priority[%s].\n",
+				strerror(errno));
+		return ret;
+	}
+
+	return 0;
+}

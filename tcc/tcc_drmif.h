@@ -36,7 +36,7 @@ struct tcc_device {
 };
 
 /*
- * Exynos Buffer Object structure.
+ * Tcc Buffer Object structure.
  *
  * @dev: tcc device object allocated.
  * @handle: a gem handle to gem object created.
@@ -82,5 +82,9 @@ int tcc_prime_fd_to_handle(struct tcc_device *dev, int fd,
  */
 int tcc_vidi_connection(struct tcc_device *dev, uint32_t connect,
 				uint32_t ext, void *edid);
+/*
+ * Request change tcc hardware overlay priority.
+ */
+int tcc_lcd_ovp(struct tcc_device *dev, uint32_t ovp);
 
 #endif /* TCC_DRMIF_H_ */

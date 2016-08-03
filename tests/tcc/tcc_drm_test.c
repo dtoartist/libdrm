@@ -32,7 +32,7 @@
 #include "tcc_drm.h"
 #include "tcc_drmif.h"
 
-#define DRM_MODULE_NAME		"tcc"
+#define DRM_MODULE_NAME		"tcc-drm"
 
 static unsigned int screen_width, screen_height;
 
@@ -174,6 +174,7 @@ int main(int argc, char **argv)
 	uint32_t handles[4] = {0}, pitches[4] = {0}, offsets[4] = {0};
 	drmModeRes *resources;
 	int ret, fd, c;
+	int user_ovp;
 
 	memset(&con, 0, sizeof(struct connector));
 
@@ -270,6 +271,16 @@ int main(int argc, char **argv)
 	if (!src) {
 		ret = -EFAULT;
 		goto err_rm_fb;
+	}
+
+	wait_for_user_input(0);
+
+	printf("please input tcc specific overlay priority number(0~31) >> ");
+	scanf("%d", &user_ovp);
+	ret = tcc_lcd_ovp(dev, user_ovp);
+	if (ret < 0) {
+		ret = -EFAULT;
+		goto err_free_src;
 	}
 
 	wait_for_user_input(1);

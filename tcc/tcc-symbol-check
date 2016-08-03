@@ -22,6 +22,7 @@ tcc_device_destroy
 tcc_prime_fd_to_handle
 tcc_prime_handle_to_fd
 tcc_vidi_connection
+tcc_lcd_ovp
 EOF
 done)
 
