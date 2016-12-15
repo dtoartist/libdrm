@@ -175,6 +175,7 @@ int main(int argc, char **argv)
 	drmModeRes *resources;
 	int ret, fd, c;
 	int user_ovp;
+	FILE *f;
 
 	memset(&con, 0, sizeof(struct connector));
 
@@ -272,6 +273,19 @@ int main(int argc, char **argv)
 		ret = -EFAULT;
 		goto err_rm_fb;
 	}
+
+	wait_for_user_input(0);
+
+	f = fopen("capture.raw", "w");
+	ret = fwrite(bo->vaddr, 1, (screen_width * screen_height * 4), f);
+	if (ret < 0) {
+		ret = -EFAULT;
+		fclose(f);
+		goto err_rm_fb;
+	}
+
+	fclose(f);
+	printf("Screen Capture Test Sucess. location : ./capture.raw\n");
 
 	wait_for_user_input(0);
 
