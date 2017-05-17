@@ -122,6 +122,11 @@ AC_ARG_ENABLE(freedreno-kgsl,
 	      [Enable support for freedreno's to use downstream android kernel API (default: disabled)]),
 	      [FREEDRENO_KGSL=$enableval], [FREEDRENO_KGSL=no])
 
+AC_ARG_ENABLE(tcc,
+              AS_HELP_STRING([--enable-tcc],
+              [Enable support for tcc's KMS API (default: auto)]),
+              [TCC=$enableval], [TCC=yes])
+
 AC_ARG_ENABLE(tegra-experimental-api,
 	      AS_HELP_STRING([--enable-tegra-experimental-api],
 	      [Enable support for Tegra's experimental API (default: disabled)]),
@@ -413,6 +418,11 @@ if test "x$VC4" = xyes; then
 	AC_DEFINE(HAVE_VC4, 1, [Have VC4 support])
 fi
 
+AM_CONDITIONAL(HAVE_TCC, [test "x$TCC" = xyes])
+if test "x$TCC" = xyes; then
+	AC_DEFINE(HAVE_TCC, 1, [Have Tcc support])
+fi
+
 AM_CONDITIONAL(HAVE_INSTALL_TESTS, [test "x$INSTALL_TESTS" = xyes])
 if test "x$INSTALL_TESTS" = xyes; then
 	AC_DEFINE(HAVE_INSTALL_TESTS, 1, [Install test programs])
@@ -524,6 +534,8 @@ AC_CONFIG_FILES([
 	tegra/libdrm_tegra.pc
 	vc4/Makefile
 	vc4/libdrm_vc4.pc
+	tcc/Makefile
+	tcc/libdrm_tcc.pc
 	tests/Makefile
 	tests/modeprint/Makefile
 	tests/modetest/Makefile
@@ -535,6 +547,7 @@ AC_CONFIG_FILES([
 	tests/vbltest/Makefile
 	tests/exynos/Makefile
 	tests/tegra/Makefile
+	tests/tcc/Makefile
 	tests/nouveau/Makefile
 	tests/util/Makefile
 	man/Makefile
@@ -555,4 +568,5 @@ echo "  EXYNOS API     $EXYNOS"
 echo "  Freedreno API  $FREEDRENO (kgsl: $FREEDRENO_KGSL)"
 echo "  Tegra API      $TEGRA"
 echo "  VC4 API        $VC4"
+echo "  Tcc API        $TCC"
 echo ""

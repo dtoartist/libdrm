@@ -19,5 +19,8 @@ LIBKMS_RADEON_FILES := \
 LIBKMS_EXYNOS_FILES := \
 	exynos.c
 
+LIBKMS_TCC_FILES := \
+	tcc.c
+
 LIBKMS_H_FILES := \
 	libkms.h

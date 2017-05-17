@@ -37,6 +37,11 @@ libkms_la_SOURCES += $(LIBKMS_EXYNOS_FILES)
 AM_CFLAGS += -I$(top_srcdir)/exynos
 endif
 
+if HAVE_TCC
+libkms_la_SOURCES += $(LIBKMS_TCC_FILES)
+AM_CFLAGS += -I$(top_srcdir)/tcc
+endif
+
 libkmsincludedir = ${includedir}/libkms
 libkmsinclude_HEADERS = $(LIBKMS_H_FILES)
 

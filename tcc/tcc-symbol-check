@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# The following symbols (past the first five) are taken from the public headers.
+# A list of the latter should be available Makefile.am/libdrm_tcc*_HEADERS
+
+FUNCS=$(nm -D --format=bsd --defined-only ${1-.libs/libdrm_tcc.so} | awk '{print $3}'| while read func; do
+( grep -q "^$func$" || echo $func )  <<EOF
+__bss_start
+_edata
+_end
+_fini
+_init
+tcc_bo_create
+tcc_bo_destroy
+tcc_bo_from_name
+tcc_bo_get_info
+tcc_bo_get_name
+tcc_bo_handle
+tcc_bo_map
+tcc_device_create
+tcc_device_destroy
+tcc_prime_fd_to_handle
+tcc_prime_handle_to_fd
+tcc_vidi_connection
+tcc_lcd_ovp
+EOF
+done)
+
+test ! -n "$FUNCS" || echo $FUNCS
+test ! -n "$FUNCS"
